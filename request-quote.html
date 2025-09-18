@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ethio Homes | Request a Quote</title>
+    <meta name="keywords" content="real estate, homes, quote, Addis Ababa, Ethiopia">
+    <meta name="description" content="Request a personalized quote for properties with Ethio Homes, your trusted real estate consultant in Addis Ababa.">
+    <meta name="author" content="Ethio Homes">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <style>
+        .contact-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            text-align: center;
+        }
+
+        .moving-contact-btn {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 9px #999;
+            animation: pulse 2s infinite;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .moving-contact-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+             color: white;
+        }
+        
+        .moving-contact-btn:active {
+          background-color: #3e8e41;
+          box-shadow: 0 5px #666;
+          transform: translateY(4px);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 15px rgba(76, 175, 80, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+            }
+        }
+
+        /* ===== NEW: Mobile Fixes for Alignment and Spacing ===== */
+        @media (max-width: 767px) {
+            .request-quote .titlepage {
+                text-align: center; /* Ensures text stays centered */
+            }
+            .contact-button-container {
+                min-height: 150px; /* Reduces the large gap on mobile */
+                padding-top: 20px;
+            }
+        }
+        /* ===== END: Mobile Fixes ===== */
+
+    </style>
+</head>
+<body class="main-layout">
+    <div class="loader_bg">
+        <div class="loader"><img src="images/loading.gif" alt="Loading"/></div>
+    </div>
+    <header>
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <a href="index.html"><img src="images/ethio_homes_logo.png" alt="Ethio Homes Logo" style="max-height: 60px; max-width: 150px; width: auto; height: auto; object-fit: contain; transform: translateY(-3px);"/></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarsExample04">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                                    <li class="nav-item active"><a class="nav-link" href="request-quote.html">Request a Quote</a></li>
+                                    <li class="nav-item d_none"><a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                    <li class="d_none get_btn"><a href="contact.html">Get a Consultation</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="request-quote">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                     <!-- Container for the selected property image -->
+                    <div id="selected-property" class="text-center mb-5">
+                        <!-- Image and title will be inserted here by JavaScript -->
+                    </div>
+                    <div class="titlepage text-center">
+                        <h2>Get in Touch</h2>
+                        <p>Click the button below to connect with us directly for a personalized consultation and quote.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-button-container">
+                        <a href="https://rodcards.com.et/profiles/yosef" target="_blank" class="moving-contact-btn">
+                            Contact Us Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <a href="https://wa.me/251910446430" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+             alt="Chat with us on WhatsApp" 
+             style="width:50px; height:50px; position:fixed; bottom:20px; right:20px; z-index:1000;">
+    </a>
+    <footer id="contact">
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="titlepage">
+                            <h2>Contact Us</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <form id="request" class="main_form">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <input class="contactus" placeholder="Full Name" type="text" name="Full Name">
+                                </div>
+                                <div class="col-md-3">
+                                    <input class="contactus" placeholder="Email" type="text" name="Email">
+                                </div>
+                                <div class="col-md-3">
+                                    <input class="contactus" placeholder="Phone Number" type="text" name="Phone Number">
+                                </div>
+                                <!-- CORRECTED: Removed the empty div -->
+                                <div class="col-md-8">
+                                    <textarea class="contactus1" placeholder="Message" name="Message"></textarea>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                                    <button class="send_btn">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-3 border_right">
+                        <ul class="location_icon">
+                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a>Bole Road, Addis Ababa, Ethiopia</li>
+                            <li><a href="https://wa.me/251910446430"><i class="fa fa-comment" aria-hidden="true"></i>+251910446430</a></li>
+                            <li><a href="https://wa.me/251922879039"><i class="fa fa-comment" aria-hidden="true"></i>+251922879039</a></li>
+                            <li><a href="https://wa.me/251904581054"><i class="fa fa-comment" aria-hidden="true"></i>+251904581054</a></li>
+                            <li><a href="mailto:info@ethiohomes.com"><i class="fa fa-envelope" aria-hidden="true"></i>info@ethiohomes.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 border_right">
+                        <h3>Company</h3>
+                        <ul class="link">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="request-quote.html">Request a Quote</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <form class="bottom_form">
+                            <h3>Subscribe</h3>
+                            <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
+                            <button class="sub_btn">Subscribe</button>                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p><a href="index.html">Ethio Homes</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- Script to display the selected property image -->
+    <script>
+        $(document).ready(function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const imgSrc = urlParams.get('img');
+            const title = urlParams.get('title');
+
+            if (imgSrc && title) {
+                const selectedPropertyDiv = $('#selected-property');
+                const propertyHtml = `
+                    <h2>${decodeURIComponent(title)}</h2>
+                    <img src="${decodeURIComponent(imgSrc)}" alt="${decodeURIComponent(title)}">
+                `;
+                selectedPropertyDiv.html(propertyHtml);
+            }
+        });
+    </script>
+</body>
+</html>
