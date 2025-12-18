@@ -1,0 +1,167 @@
+/* About Us Page Styles */
+.page-header {
+    background-color: var(--secondary-bg);
+    padding: 140px 0 60px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.page-header h2 {
+    font-size: 3rem;
+    color: var(--heading-color);
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+.about-section {
+    padding: 80px 0;
+    background-color: var(--primary-bg);
+}
+
+.about-img figure {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    height: 400px;
+    /* Reduced height */
+}
+
+.about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.about-img:hover img {
+    transform: scale(1.05);
+}
+
+.about-text {
+    padding-left: 40px;
+}
+
+.about-text h3 {
+    font-size: 2.5rem;
+    color: var(--heading-color);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.about-text h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-gold);
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.mission-box {
+    background-color: var(--secondary-bg);
+    padding: 30px;
+    border-left: 5px solid var(--accent-gold);
+    border-radius: 5px;
+    margin-top: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.mission-box h4 {
+    color: var(--accent-gold);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.mission-box p {
+    margin-bottom: 0;
+    font-style: italic;
+    text-align: left;
+}
+
+/* Commitment Section Styles */
+.commitment {
+    padding: 80px 0;
+    background: var(--secondary-bg);
+}
+
+.commitment_img figure {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    height: 400px;
+    /* Constrain height to match about image */
+}
+
+.commitment_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.commitment_img:hover img {
+    transform: scale(1.05);
+}
+
+.commitment_text {
+    padding-right: 40px;
+}
+
+.commitment_text p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.commitment_text .read_more {
+    background: var(--accent-gold);
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.commitment_text .read_more:hover {
+    background: var(--heading-color);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .about-text {
+        padding-left: 0;
+        padding-top: 30px;
+    }
+
+    .about-img figure,
+    .commitment_img figure {
+        height: 300px;
+    }
+
+    .commitment_img figure {
+        margin-top: 30px;
+    }
+
+    .commitment_text {
+        padding-right: 0;
+    }
+}

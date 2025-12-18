@@ -1,0 +1,866 @@
+﻿$(document).ready(function () {
+    const propertiesData = {
+        addis: {
+            description: `<div class="property-description">
+                            
+                                <p><strong>Why Choose Addis Real Estate:</strong></p>
+                                <p><strong>Location:</strong> Gerji, just 3km from Bole International Airport.</p>
+                                <p><strong>Construction Status:</strong> 95% complete.</p>
+                                <p><strong>Features:</strong></p>
+                                <ul>
+                                    <li>4-side view</li>
+                                    <li>Gated Compound</li>
+                                    <li>Swimming pool, Gym, Spa, Terrace</li>
+                                    <li>2 Car Parking Spaces per unit</li>
+                                    <li>Children's park & Football playground</li>
+                                </ul>
+                                <p><strong>Payment Options:</strong></p>
+                                <ul>
+                                    <li>Down payment: 15-25%</li>
+                                    <li>Attractive Discounts available</li>
+                                    <li>50/50 Bank financing option</li>
+                                </ul>
+                                <p><strong>Nearby Landmarks:</strong></p>
+                                <ul>
+                                    <li>Unity University</li>
+                                    <li>Myungsung Medical College (Korea Hospital)</li>
+                                    <li>British International School</li>
+                                    <li>Ethio-parents School</li>
+                                    <li>Life Fitness</li>
+                                    <li>All-mart Supermarket</li>
+                                    <li>Toto Traditional Food, Tapu Foods, Fresh Corner</li>
+                                    <li>Corridor project completed</li>
+                                </ul>
+                                <p><strong>Contact:</strong> 0910446430</p>
+                            </div>`,
+            listings: [
+                { img: "images/realstates/addis/addis1.jpg", title: "Addis Real Estate" },
+                { img: "images/realstates/addis/addis2.jpg", title: "Addis Real Estate" },
+                { img: "images/realstates/addis/addis3.jpg", title: "Addis Real Estate" },
+                { img: "images/realstates/addis/addis4.jpg", title: "Addis Real Estate" },
+                { img: "images/realstates/addis/addis5.jpg", title: "Addis Real Estate" },
+                { img: "images/realstates/addis/addis6.jpg", title: "Addis Real Estate" }
+            ]
+        },
+        ahenk: {
+            description: `<div class="property-description">
+                <p><strong>Bole Super Luxurious Apartment - Turkey Work</strong></p>
+                
+                <p><strong>Current Offerings:</strong></p>
+                <ul>
+                    <li><strong>Bole Dembel:</strong> 100% Finished - Ready for Sale</li>
+                    <li><strong>Rwanda:</strong> Coming Soon (Delivery in 2 years)</li>
+                </ul>
+                
+                <p><strong>Apartment Features:</strong></p>
+                <ul>
+                    <li>Luxurious 2 and 3 Bedroom options</li>
+                    <li>Individual Map/Title Deed</li>
+                    <li>Maids Room and Store</li>
+                    <li>Backup Generator</li>
+                    <li>CCTV Camera Security</li>
+                    <li>Dedicated Parking</li>
+                    <li>Terrace</li>
+                    <li>Gym and Spa</li>
+                </ul>
+                
+                <p><strong>Investment Potential:</strong> High rental value suitable for investment.</p>
+                <p><strong>Buy Today, Move in Tomorrow!</strong></p>
+                
+                <p><strong>Contact:</strong> 0910446430 | 0904581054</p>
+            </div> `,
+            listings: [
+                { img: "images/realstates/ahenk/ahenk1.jpg", title: "Ahenk Real Estate" },
+                { img: "images/realstates/ahenk/ahenk2.jpg", title: "Ahenk Real Estate" },
+                { img: "images/realstates/ahenk/ahenk3.jpg", title: "Ahenk Real Estate" },
+                { img: "images/realstates/ahenk/ahenk4.jpg", title: "Ahenk Real Estate" },
+                { img: "images/realstates/ahenk/ahenk5.jpg", title: "Ahenk Real Estate" },
+                { img: "images/realstates/ahenk/ahenk6.png", title: "Ahenk Real Estate" }
+            ],
+            carousels: [
+                {
+                    title: "Coming Soon Projects - Rwanda",
+                    listings: [
+                        { img: "images/realstates/ahenk/comingsoon/ahenkc1.jpg", title: "Coming Soon" },
+                        { img: "images/realstates/ahenk/comingsoon/ahenkc2.jpg", title: "Coming Soon" },
+                        { img: "images/realstates/ahenk/comingsoon/ahenkc3.jpg", title: "Coming Soon" },
+                        { img: "images/realstates/ahenk/comingsoon/ahenkc4.jpg", title: "Coming Soon" },
+                        { img: "images/realstates/ahenk/comingsoon/ahenkc5.jpg", title: "Coming Soon" }
+                    ]
+                }
+            ]
+        },
+        akoya: {
+            description: `<div class="property-description">
+        
+            <p><strong>Explore Akoya Properties Premium Towers:</strong> Twins, Ozone, Novelty, and Ameliyaz Tower!</p>
+
+            <p><strong>Locations:</strong></p>
+            <ul>
+                <li>Piassa</li>
+                <li>Sarbet (Canada Embassy)</li>
+                <li>Semen Mazegaja</li>
+            </ul>
+
+            <p><strong>Special Offer:</strong> 3% - 25% Discount available! Start with 10% Down Payment.</p>
+
+            <p><strong>Available Units:</strong></p>
+            <ul>
+                <li><strong>1 Bedroom:</strong> 81 sqm</li>
+                <li><strong>2 Bedroom:</strong> 110 sqm & 116 sqm</li>
+                <li><strong>3 Bedroom:</strong> 130 sqm</li>
+                <li><strong>4 Bedroom:</strong> 211 sqm</li>
+            </ul>
+
+            <p><strong>21+ Amenities:</strong></p>
+            <ul>
+                <li>Modern Elevator & Backup Generator</li>
+                <li>Swimming Pool, Gym & Spa</li>
+                <li>Underground Water & Garbage Chute</li>
+                <li>Parking & Security Cameras</li>
+                <li>Kids & Adults Recreation Areas</li>
+                <li>Spacious Terrace</li>
+            </ul>
+
+            <p><strong>Contact:</strong> 0904581054</p>
+        </div>`,
+            listings: [
+                { img: "images/realstates/akoya/akoya1.jpg", title: "Akoya Properties" },
+                { img: "images/realstates/akoya/akoya2.jpg", title: "Akoya Properties" },
+                { img: "images/realstates/akoya/akoya3.jpg", title: "Akoya Properties" },
+                { img: "images/realstates/akoya/akoya4.jpg", title: "Akoya Properties" },
+                { img: "images/realstates/akoya/akoya5.jpg", title: "Akoya Properties" },
+                { img: "images/realstates/akoya/akoya6.jpg", title: "Akoya Properties" },
+                { img: "images/realstates/akoya/akoya7.jpg", title: "Akoya Properties" },
+                { img: "images/realstates/akoya/akoya8.jpg", title: "Akoya Properties" }
+            ]
+        },
+        amibara: {
+            description: `<div class="property-description">
+                            
+                                <p><strong>Own a Home Near Filwoha, Sheraton Hotel, and Friendship Park</strong></p>
+                                <p><strong>Why Choose Amibara:</strong></p>
+                                <ul>
+                                    <li>Construction over 85% complete</li>
+                                    <li>Individual Title Deeds available</li>
+                                    <li>50% Bank Financing option</li>
+                                    <li>Flexible Plan: Pay 10% now, remaining 50% over up to 20 years</li>
+                                </ul>
+                                
+                                <p><strong>Special Features:</strong></p>
+                                <ul>
+                                    <li>Ethiopia's first indoor ice skating rink</li>
+                                    <li>Luxurious designs suitable for living or investment</li>
+                                    <li>Located next to Friendship Park</li>
+                                </ul>
+                                
+                                <p><strong>Available Units:</strong></p>
+                                <ul>
+                                    <li><strong>1 Bedroom:</strong> 71 sqm & 91 sqm</li>
+                                    <li><strong>2 Bedroom:</strong> 132 sqm & 139 sqm</li>
+                                    <li>Options up to 4 Bedrooms</li>
+                                </ul>
+                                
+                                <p><strong>Limited Time Discount Available!</strong></p>
+                                <p><strong>Contact:</strong> 0910446430 | 0904581054</p>
+                            </div>`,
+            listings: [
+                { img: "images/realstates/amibara/amibara1.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara2.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara3.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara4.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara5.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara6.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara7.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara8.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara9.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara10.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara11.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara12.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara13.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara14.jpg", title: "Amibara Properties" },
+                { img: "images/realstates/amibara/amibara15.jpg", title: "Amibara Properties" }
+            ]
+        },
+        ayat: {
+            description: `<div class="property-description">
+        
+            <p><strong>Premier Residential Villages:</strong></p>
+            <p>Choose Ayat for our rapid development, excellent infrastructure, and preferred living environments.</p>
+
+            <p><strong>Prime Locations:</strong></p>
+            <ul>
+                <li>CMC Area</li>
+                <li>Meri Area</li>
+                <li>Ayat Area</li>
+                <li>Kasanchis Site</li>
+            </ul>
+
+            <p><strong>Offer:</strong> Affordable apartments sold in Ethiopian Birr.</p>
+
+            <p><strong>Investment Opportunities:</strong></p>
+            <ul>
+                <li>Organization with over 30 years of experience</li>
+                <li>Profitable shares starting from 250,000 Birr</li>
+                <li>Proven Annual Dividend Growth:
+                    <ul>
+                        <li>2015: 38%</li>
+                        <li>2016: 53%</li>
+                        <li>2017: 51%</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p><strong>Contact:</strong> 0904581054 | 0910446430</p>
+        </div>`,
+            listings: [
+                { img: "images/realstates/ayat/ayat1.jpg", title: "Ayat Real Estate" },
+                { img: "images/realstates/ayat/ayat2.jpg", title: "Ayat Real Estate" },
+                { img: "images/realstates/ayat/ayat3.jpg", title: "Ayat Real Estate" },
+                { img: "images/realstates/ayat/ayat4.jpg", title: "Ayat Real Estate" }
+            ]
+        },
+        fh: {
+            description: `<div class="property-description">
+                            
+                                <p><strong>Location:</strong> Bole Edna Mall - Convenient and Quiet.</p>
+                                
+                                <p><strong>Why FH Real Estate?</strong></p>
+                                <ul>
+                                    <li>95% Construction Complete (Finishing stage)</li>
+                                    <li>Individual Map/Title Deed for all units</li>
+                                    <li>Excellent Investment (ROI)</li>
+                                    <li>Down Payment: 50-60%</li>
+                                </ul>
+                                
+                                <p><strong>Building Features:</strong></p>
+                                <ul>
+                                    <li>Modern Elevators</li>
+                                    <li>Reliable Backup Generator</li>
+                                    <li>Basement Parking</li>
+                                    <li>Common Terrace with City View</li>
+                                    <li>Modern Waste Chute System</li>
+                                    <li>Fire Safety System</li>
+                                    <li>Modern Gym</li>
+                                </ul>
+                                
+                                <p><strong>Available Units:</strong></p>
+                                <ul>
+                                    <li><strong>3 Bedroom:</strong> 5 Bathrooms, Maid's Room & Store</li>
+                                    <li><strong>2 Bedroom:</strong> En-suite bathrooms, Maid's Room & Bathroom</li>
+                                </ul>
+                                
+                                <p><strong>Contact:</strong> 0904581054 | 10446430</p>
+                            </div>`,
+            listings: [
+                { img: "images/realstates/fh/fh1.jpg", title: "FH Real Estate" },
+                { img: "images/realstates/fh/fh2.jpg", title: "FH Real Estate" },
+                { img: "images/realstates/fh/fh3.jpg", title: "FH Real Estate" },
+                { img: "images/realstates/fh/fh4.jpg", title: "FH Real Estate" },
+                { img: "images/realstates/fh/fh5.jpg", title: "FH Real Estate" },
+                { img: "images/realstates/fh/fh6.jpg", title: "FH Real Estate" },
+                { img: "images/realstates/fh/fh7.jpg", title: "FH Real Estate" },
+                { img: "images/realstates/fh/fh8.jpg", title: "FH Real Estate" },
+                { img: "images/realstates/fh/fh9.jpg", title: "FH Real Estate" }
+            ]
+        },
+        ghion: {
+            description: `<div class="property-description">
+        
+            <p><strong>Ghion Homes - 8th Sister Company of Ghion Gas</strong></p>
+            <p><strong>Location:</strong> Mehal Wolo Sefir - Beautiful residential village on 20,000 sqm compound.</p>
+
+            <p><strong>Construction Status:</strong></p>
+            <ul>
+                <li>90% Complete (Ready in 10 months)</li>
+                <li>80% constructed units available</li>
+            </ul>
+
+            <p><strong>Units & Payment:</strong></p>
+            <ul>
+                <li>1 to 4 Bedroom options</li>
+                <li>10% or 20% Down payment</li>
+                <li>50% Bank Financing Option</li>
+                <li><strong>Discount:</strong> Up to 20% on selected units!</li>
+            </ul>
+
+            <p><strong>Olympic Standard Amenities:</strong></p>
+            <ul>
+                <li>Swimming Pool</li>
+                <li>Basketball Court</li>
+                <li>Indoor & Outdoor Playground</li>
+                <li>Gym and Spa</li>
+                <li>Running Track</li>
+                <li>Ground Water & Backup Generators</li>
+            </ul>
+
+            <p><strong>Contact:</strong> 0910446430</p>
+        </div>`,
+            listings: [
+                { img: "images/realstates/ghion/ghion1.jpg", title: "Ghion Homes" },
+                { img: "images/realstates/ghion/ghion2.jpg", title: "Ghion Homes" },
+                { img: "images/realstates/ghion/ghion3.jpg", title: "Ghion Homes" },
+                { img: "images/realstates/ghion/ghion4.jpg", title: "Ghion Homes" },
+                { img: "images/realstates/ghion/ghion5.jpg", title: "Ghion Homes" },
+                { img: "images/realstates/ghion/ghion6.jpg", title: "Ghion Homes" }
+            ]
+        },
+        hosea: {
+            description: `<div class="property-description">
+                            
+                                <p><strong>Locations:</strong></p>
+                                <ul>
+                                    <li><strong>Bole Medhanialem:</strong> Luxury Apartments</li>
+                                    <li><strong>Ayat 49:</strong> Compound Project (G+1 Villa & G+4 Apartment)</li>
+                                    <li><strong>CMC Site:</strong> Coming Soon</li>
+                                </ul>
+                                
+                                <p><strong>Available Units:</strong></p>
+                                <ul>
+                                    <li><strong>Studio:</strong> 57 sqm & 81 sqm</li>
+                                    <li><strong>1 Bedroom:</strong> 84-86 sqm</li>
+                                    <li><strong>2 Bedroom:</strong> 134 sqm - 156 sqm (with Maid's room)</li>
+                                    <li><strong>3 Bedroom:</strong> 168 sqm (with Maid's room)</li>
+                                </ul>
+                                
+                                <p><strong>Premium Amenities & Features:</strong></p>
+                                <ul>
+                                    <li>Swimming Pool with Pool Bar</li>
+                                    <li>Modern Gymnasium</li>
+                                    <li>Children's Playground and Daycare</li>
+                                    <li>Youth Entertainment Center</li>
+                                    <li>Meeting Hall</li>
+                                    <li>Laundry, Cafe, Library</li>
+                                    <li>Underground Water Tank & Backup Generator</li>
+                                    <li>7 Elevators (including Cargo)</li>
+                                    <li>Garbage Chute</li>
+                                    <li>Guest Reception & Lounge</li>
+                                </ul>
+                                
+                                <p><strong>Contact:</strong> 0904581054</p>
+                            </div>`,
+            listings: [
+                { img: "images/realstates/hosea/hosea1.jpg", title: "Hosea Real Estate" },
+                { img: "images/realstates/hosea/hosea2.jpg", title: "Hosea Real Estate" },
+                { img: "images/realstates/hosea/hosea3.jpg", title: "Hosea Real Estate" },
+                { img: "images/realstates/hosea/hosea4.jpg", title: "Hosea Real Estate" },
+                { img: "images/realstates/hosea/hosea5.jpg", title: "Hosea Real Estate" },
+                { img: "images/realstates/hosea/hosea6.jpg", title: "Hosea Real Estate" },
+                { img: "images/realstates/hosea/hosea7.jpg", title: "Hosea Real Estate" },
+                { img: "images/realstates/hosea/hosea8.jpg", title: "Hosea Real Estate" },
+                { img: "images/realstates/hosea/hosea9.jpg", title: "Hosea Real Estate" }
+            ]
+        },
+        metro: {
+            description: `<div class="property-description">
+                <p><strong>Sub slogan: Word and Action!</strong></p>
+                <p><strong>Buy Today, Move in Tomorrow!</strong></p>
+                
+                <p><strong>Project:</strong> G+3 Apartments (Fully Finished)</p>
+                <ul>
+                    <li>2 Bedroom Units</li>
+                    <li>3 Bedroom Units</li>
+                    <li>One Unit Per Floor (Privacy)</li>
+                </ul>
+                
+                <p><strong>Community Features - A Modern Village:</strong></p>
+                <ul>
+                    <li>Free Gym and Spa (Lifetime)</li>
+                    <li>Children's Playground</li>
+                    <li>Ample Parking</li>
+                    <li>Supermarket</li>
+                    <li>Community Hall</li>
+                    <li>Security Cameras & Secure Compound</li>
+                    <li>Ground Water Supply</li>
+                </ul>
+                
+                <p><strong>About Us:</strong></p>
+                <ul>
+                    <li>60,000 sqm Compound</li>
+                    <li>58+ Years in Development (Sister companies: Kangaroo Foam, United Beer, Metro Tariya, Enye Real Estate, Nova Real Estate)</li>
+                </ul>
+                
+                <p><strong>Available Products:</strong></p>
+                <ul>
+                    <li><strong>G+1 Villa:</strong> Luxurious (375-400 sqm) - Apartment Price!</li>
+                    <li><strong>G+2 Townhouse:</strong> 175 sqm (Flexible Payment)</li>
+                    <li><strong>G+3 Apartment:</strong> 2 & 3 Bedrooms</li>
+                </ul>
+                
+                <p><strong>Contact:</strong> +251904581054 | +251910446439</p>
+            </div> `,
+            listings: [
+                { img: "images/realstates/metro/metro1.jpg", title: "Metro Real Estate" },
+                { img: "images/realstates/metro/metro2.jpg", title: "Metro Real Estate" },
+                { img: "images/realstates/metro/metro3.jpg", title: "Metro Real Estate" },
+                { img: "images/realstates/metro/metro4.jpg", title: "Metro Real Estate" },
+                { img: "images/realstates/metro/metro5.jpg", title: "Metro Real Estate" }
+            ],
+            carousels: [
+                {
+                    title: "Apartments (G+3)",
+                    listings: [
+                        { img: "images/realstates/metro/apartment/G+3/1.jpg", title: "Metro Apartment G+3" },
+                        { img: "images/realstates/metro/apartment/G+3/2.jpg", title: "Metro Apartment G+3" },
+                        { img: "images/realstates/metro/apartment/G+3/3.jpg", title: "Metro Apartment G+3" },
+                        { img: "images/realstates/metro/apartment/G+3/4.jpg", title: "Metro Apartment G+3" },
+                        { img: "images/realstates/metro/apartment/G+3/5.jpg", title: "Metro Apartment G+3" },
+                        { img: "images/realstates/metro/apartment/G+3/6.jpg", title: "Metro Apartment G+3" },
+                        { img: "images/realstates/metro/apartment/G+3/7.jpg", title: "Metro Apartment G+3" }
+                    ]
+                },
+                {
+                    title: "Townhouses (G+2)",
+                    listings: [
+                        { img: "images/realstates/metro/TownHouse/G+2/1.jpg", title: "Metro Townhouse G+2" },
+                        { img: "images/realstates/metro/TownHouse/G+2/2.jpg", title: "Metro Townhouse G+2" }
+                    ]
+                },
+                {
+                    title: "Villas (G+1)",
+                    listings: [
+                        { img: "images/realstates/metro/Villa/G+1/1.jpg", title: "Metro Villa G+1" },
+                        { img: "images/realstates/metro/Villa/G+1/2.jpg", title: "Metro Villa G+1" },
+                        { img: "images/realstates/metro/Villa/G+1/3.jpg", title: "Metro Villa G+1" }
+                    ]
+                }
+            ]
+        },
+        palm: {
+            description: `<div class="property-description">
+
+    <p><strong>Prime Locations & Progress:</strong></p>
+    <ul>
+        <li><strong>Gerji Mebrat Hail:</strong> 91% Complete</li>
+        <li><strong>Bole Dembel:</strong> 64% Complete</li>
+        <li><strong>Bisrate Gabriel:</strong> 98% Complete</li>
+        <li><strong>Piassa Site:</strong> 41% Complete</li>
+    </ul>
+
+    <p><strong>Residential Offer:</strong></p>
+    <p>Start your home ownership with 15% down payment. Pay the rest based on construction progress.</p>
+
+    <p><strong>Commercial Offer:</strong></p>
+    <ul>
+        <li>Shops and Offices available for short-term handover.</li>
+        <li>60/40 Bank Option arranged.</li>
+    </ul>
+
+    <p><strong>Act Now:</strong> Limited units remaining!</p>
+    <p><strong>Contact:</strong> 0904581054</p>
+</div>`,
+            listings: [
+                { img: "images/realstates/palm/palm1.jpg", title: "Palm Real Estate" },
+                { img: "images/realstates/palm/palm2.jpg", title: "Palm Real Estate" },
+                { img: "images/realstates/palm/palm3.jpg", title: "Palm Real Estate" },
+                { img: "images/realstates/palm/palm4.jpg", title: "Palm Real Estate" },
+                { img: "images/realstates/palm/palm5.jpg", title: "Palm Real Estate" },
+                { img: "images/realstates/palm/palm6.jpg", title: "Palm Real Estate" }
+            ]
+        },
+        reality: {
+            description: `<div class="property-description">
+                            
+                                <p><strong>"Delivering the Truth"</strong></p>
+                                <p>10 years. 8 projects. 100% on-time delivery. We believe in transparency and trust.</p>
+                                
+                                <p><strong>Current Projects:</strong></p>
+                                <ul>
+                                    <li>Bole Atlas - Modern Apartments</li>
+                                    <li>Bole Dembel Gazebo - Diplomat Road Project 2</li>
+                                    <li>Sarbet Project</li>
+                                </ul>
+                                
+                                <p><strong>Special Offer:</strong> 4% Discount for the first 10 customers!</p>
+                                <ul>
+                                    <li><strong>1 Bedroom (86 sqm):</strong> 11,653,824 Birr</li>
+                                    <li><strong>2 Bedroom (137 sqm):</strong> 15,166,752 Birr</li>
+                                    <li><strong>3 Bedroom (186 sqm):</strong> 20,555,376 Birr</li>
+                                </ul>
+                                
+                                <p><strong>What You Get:</strong></p>
+                                <ul>
+                                    <li>International Finishing Materials</li>
+                                    <li>Gym & Spa</li>
+                                    <li>High Security Camera System</li>
+                                    <li>Air Sensors</li>
+                                    <li>Ground Water Supply</li>
+                                    <li>Spacious Event Hall</li>
+                                    <li>Traditional Kitchens & common amenities</li>
+                                </ul>
+                                
+                                <p><strong>Contact:</strong> 0910446430</p>
+                            </div>`,
+            listings: [
+                { img: "images/realstates/reality/reality1.jpg", title: "Reality Real Estate" },
+                { img: "images/realstates/reality/reality2.jpg", title: "Reality Real Estate" },
+                { img: "images/realstates/reality/reality3.jpg", title: "Reality Real Estate" },
+                { img: "images/realstates/reality/reality4.jpg", title: "Reality Real Estate" },
+                { img: "images/realstates/reality/reality5.jpg", title: "Reality Real Estate" },
+                { img: "images/realstates/reality/reality6.jpg", title: "Reality Real Estate" },
+                { img: "images/realstates/reality/reality7.jpg", title: "Reality Real Estate" },
+                { img: "images/realstates/reality/reality8.jpg", title: "Reality Real Estate" },
+                { img: "images/realstates/reality/reality9.jpg", title: "Reality Real Estate" },
+                { img: "images/realstates/reality/reality10.jpg", title: "Reality Real Estate" },
+                { img: "images/realstates/reality/reality11.jpg", title: "Reality Real Estate" }
+            ]
+        },
+        temer: {
+            description: `<div class="property-description">
+            
+                <p><strong>Reliability and Quality are our Identity.</strong></p>
+                <p>We have thoroughly reviewed more than 7 sites to prove our commitment.</p>
+
+                <p><strong>Special Offer:</strong> 35% Discount with 65% Full Payment!</p>
+
+                <p><strong>Locations:</strong></p>
+                <ul>
+                    <li>Sarbet, Aware, Ayat, Piassa, Garment, Sumaletera</li>
+                </ul>
+
+                <p><strong>Modern Houses (1-3 Year Delivery):</strong></p>
+                <ul>
+                    <li><strong>1 Bedroom (78 sqm):</strong> 5.4 Million Birr</li>
+                    <li><strong>2 Bedroom (81 sqm):</strong> 5.7 Million Birr</li>
+                    <li><strong>3 Bedroom (117 sqm):</strong> 8.3 Million Birr</li>
+                    <li>Spacious Apartments (106-157 sqm) also available.</li>
+                </ul>
+
+                <p><strong>Payment Plan:</strong> 10% Down payment, remaining in 15 rounds over 3 years (Fixed Price).</p>
+
+                <p><strong>Commercial Shops (Piazza & Qality Gelan):</strong></p>
+                <ul>
+                    <li>Down payment from 500,000 Birr OR</li>
+                    <li>Full Payment: 2.5 Million Birr</li>
+                </ul>
+
+                <p><strong>Contact:</strong> +251910446430 | +251904581054</p>
+            </div>
+                          </div> `,
+            listings: [
+                { img: "images/realstates/temer/temer1.jpg", title: "Temer Real Estate" },
+                { img: "images/realstates/temer/temer2.jpg", title: "Temer Real Estate" },
+                { img: "images/realstates/temer/temer3.jpg", title: "Temer Real Estate" },
+                { img: "images/realstates/temer/temer4.jpg", title: "Temer Real Estate" },
+                { img: "images/realstates/temer/temer5.jpg", title: "Temer Real Estate" }
+            ]
+        }
+    };
+
+    // --- Engaging Promotion Slider Logic ---
+    let currentSlide = 0;
+    const slides = $('.promotion-slider .slide');
+    const slideCount = slides.length;
+
+    function showSlide(index) {
+        slides.removeClass('active');
+        $(slides[index]).addClass('active');
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        showSlide(currentSlide);
+    }
+
+    $('.slider-nav .next-slide').click(nextSlide);
+    $('.slider-nav .prev-slide').click(function () {
+        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+        showSlide(currentSlide);
+    });
+
+    let slideInterval = setInterval(nextSlide, 7000);
+    showSlide(currentSlide);
+
+    // --- Property Loading Logic ---
+    let carouselIntervals = [];
+
+    // --- Property Loading Logic ---
+    function loadProperties(companyKey) {
+        // Clear existing auto-slide intervals/animations
+        carouselIntervals.forEach(id => cancelAnimationFrame(id));
+        carouselIntervals = [];
+
+        const display = $('#property-display');
+        const descriptionBox = $('#property-location-description');
+        display.empty();
+        descriptionBox.empty();
+
+        if (companyKey === 'all') {
+            // Set Page Title
+            $('#page-title').text('Our Properties');
+
+            // Show promotion slider and news section on "All Properties" page
+            $('.hero-slider').slideDown();
+            $('.news-section').slideDown();
+
+            // "All Properties" View: Show 1 representative card per company
+            descriptionBox.html(`
+<div class="location-info">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <h4>Select a Real Estate Company to View More Details</h4>
+                </div>
+    `);
+
+            Object.keys(propertiesData).forEach(key => {
+                const company = propertiesData[key];
+                // Use the first image as representative
+                const representative = company.listings[0];
+
+                const companyHtml = `
+                <div class="col-md-4 col-sm-6 mb-4">
+    <div class="product_box property-card" data-company="${key}">
+        <figure>
+            <img src="${representative.img}" alt="${representative.title}" />
+            <div class="overlay">
+                <span class="view-btn">View ${key.charAt(0).toUpperCase() + key.slice(1)} Properties</span>
+            </div>
+        </figure>
+        <div class="product_info">
+            <h3>${representative.title}</h3>
+        </div>
+    </div>
+                </div>
+    `;
+                display.append(companyHtml);
+            });
+
+        } else if (propertiesData[companyKey]) {
+            // Specific Company View
+            const company = propertiesData[companyKey];
+
+            // Set Page Title to Company Name
+            $('#page-title').text(company.listings[0].title);
+
+            // Hide promotion slider and news section on specific company pages
+            $('.hero-slider').slideUp();
+            $('.news-section').slideUp();
+
+            // Specific Company View
+
+            // 1. Render Description with New Right-Side Carousel (3 Random Images)
+            const allImages = company.listings.map(l => l.img);
+            // Get 3 random unique images
+            const randomImages = [];
+            const tempImages = [...allImages];
+            for (let i = 0; i < 3 && tempImages.length > 0; i++) {
+                const randomIndex = Math.floor(Math.random() * tempImages.length);
+                randomImages.push(tempImages[randomIndex]);
+                tempImages.splice(randomIndex, 1);
+            }
+
+            // Generate Description Carousel Items
+            const descCarouselItems = randomImages.map(img => `
+            <div class="desc-slide">
+                <img src="${img}" alt="Property View">
+            </div>
+    `).join('');
+
+            const descriptionHtml = `
+                <div class="description-wrapper">
+                    <div class="description-text">
+                        ${company.description}
+                    </div>
+                    <div class="description-image-carousel">
+                         <div class="desc-carousel-track">
+                             ${descCarouselItems}
+                             ${descCarouselItems} <!-- Duplicate for infinite loop -->
+                         </div>
+                    </div>
+                </div>
+    `;
+            descriptionBox.html(descriptionHtml);
+
+            // Start Description Carousel (Vertical or Horizontal? User said "to the right", implied box. Let's do horizontal marquee or fade)
+            // Lets do simple horizontal slide for consistency
+
+            // 2. Render Main Listings Grid
+            company.listings.forEach(property => {
+                const propertyHtml = `
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="product_box property-listing" data-img="${property.img}" data-title="${property.title}">
+                        <figure>
+                            <img src="${property.img}" alt="${property.title}" />
+                            <div class="overlay">
+                                <span class="view-btn">Request Quote</span>
+                            </div>
+                        </figure>
+                        <div class="product_info">
+                            <h3>${property.title}</h3>
+                        </div>
+                    </div>
+                </div>
+    `;
+                display.append(propertyHtml);
+            });
+
+            // 3. Render Main Carousels (Continuous Flow)
+            if (company.carousels) {
+                company.carousels.forEach((carousel, index) => {
+                    const carouselId = `carousel-${companyKey}-${index}`;
+
+                    // Duplicate items for infinite marquee effect
+                    const itemsHtml = carousel.listings.map(item => `
+                    <div class="carousel-card simple-carousel">
+                        <img src="${item.img}" alt="${item.title}" class="slider-img-square" />
+                    </div>
+    `).join('');
+
+                    let carouselHtml = `
+                    <div class="col-12 property-carousel">
+                        <div class="carousel-title">${carousel.title}</div>
+                        <div class="carousel-container marquee-container">
+                            <div class="carousel-track-workspace marquee-workspace" id="${carouselId}-workspace">
+                                <div class="carousel-track marquee-track" id="${carouselId}">
+                                    ${itemsHtml}
+                                    ${itemsHtml} <!-- Duplicate for seamless loop -->
+                                    ${itemsHtml} <!-- Triplicate just in case wide screen -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    `;
+                    display.append(carouselHtml);
+                });
+            }
+
+            // Start All Marquees (Main + Description)
+            // We use a general function to animate any .marquee-track and .desc-carousel-track
+            startMarquees();
+
+        }
+
+        // Add click handler for property cards
+        $('.property-card').off('click').on('click', function () {
+            const companyKey = $(this).data('company');
+            loadProperties(companyKey);
+
+            // Update sidebar active state
+            $('.subgroups a').removeClass('active');
+            $('.subgroups a[data-company="' + companyKey + '"]').addClass('active');
+
+            // Instant scroll to top (No sliding animation)
+            window.scrollTo(0, 0);
+        });
+
+        // Add click handler for specific property listings (Redirect to Quote)
+        // using 'body' delegate to ensure it works for dynamically added elements
+        $('body').off('click', '.property-listing').on('click', '.property-listing', function () {
+            const img = $(this).data('img');
+            const title = $(this).data('title');
+            window.location.href = `request-quote.html?img=${encodeURIComponent(img)}&title=${encodeURIComponent(title)}`;
+        });
+    }
+
+    // REDEFINED startMarquees with Robust Logic
+    function startMarquees() {
+        const speed = 0.5;
+
+        // Main Carousels
+        $('.marquee-track').each(function () {
+            const track = this;
+            let pos = 0;
+            function animate() {
+                if (!document.body.contains(track)) return; // Stop if element removed
+
+                pos += speed;
+                // Reset after 1/3 (since we have 3 sets of items)
+                if (track.scrollWidth > 0 && pos >= track.scrollWidth / 3) {
+                    pos = 0;
+                }
+                track.style.transform = `translateX(-${pos}px)`;
+                requestAnimationFrame(animate);
+            }
+            requestAnimationFrame(animate);
+        });
+
+        // Description Carousel
+        $('.desc-carousel-track').each(function () {
+            const track = this;
+            let pos = 0;
+            function animate() {
+                if (!document.body.contains(track)) return; // Stop if element removed
+
+                pos += 0.5;
+                // Reset after 1/2 (since we have 2 sets of items)
+                if (track.scrollWidth > 0 && pos >= track.scrollWidth / 2) {
+                    pos = 0;
+                }
+                track.style.transform = `translateX(-${pos}px)`;
+                requestAnimationFrame(animate);
+            }
+            requestAnimationFrame(animate);
+        });
+    }
+
+    // --- Sidebar, Filter & Icon Positioning Logic ---
+    const sidebar = $('#product-sidebar');
+    const sidebarToggle = $('#sidebar-toggle');
+    const sidebarOverlay = $('#sidebar-overlay');
+
+    sidebarToggle.click(function () {
+        sidebar.toggleClass('show');
+        sidebarOverlay.toggleClass('show');
+        $(this).fadeOut(200);
+    });
+
+    function closeSidebar() {
+        sidebar.removeClass('show');
+        sidebarOverlay.removeClass('show');
+        sidebarToggle.fadeIn(200);
+    }
+
+    sidebarOverlay.click(closeSidebar);
+
+    $('.subgroups a').click(function (e) {
+        e.preventDefault();
+        $('.subgroups a').removeClass('active');
+        $(this).addClass('active');
+        const company = $(this).data('company');
+        loadProperties(company);
+
+        const headerHeight = $('.header').outerHeight() || 0;
+        const targetTop = $('#property-location-description').length ? $('#property-location-description').offset().top : 0;
+
+        window.scrollTo(0, 0);
+
+        if ($(window).width() < 768) {
+            closeSidebar();
+        }
+    });
+
+    // Function to manage the hamburger icon's position on scroll
+    function handleStickyToggler() {
+        if ($(window).width() >= 768) {
+            sidebarToggle.css({ 'display': 'none', 'position': '', 'top': '' });
+            return;
+        }
+
+        sidebarToggle.css('display', 'block');
+
+        const footer = $('footer');
+        if (!footer.length || !sidebarToggle.length) return;
+
+        const scrollBottom = $(window).scrollTop() + $(window).height();
+        const footerTop = footer.offset().top;
+        const togglerHeight = sidebarToggle.outerHeight();
+
+        if (scrollBottom >= footerTop) {
+            sidebarToggle.css({
+                position: 'absolute',
+                top: footerTop - togglerHeight - 20
+            });
+        } else {
+            sidebarToggle.css({
+                position: 'fixed',
+                top: '85px'
+            });
+        }
+    }
+
+    $(window).on('scroll resize', handleStickyToggler);
+
+    // Initial setup
+    loadProperties('all');
+    $('.subgroups a[data-company="all"]').addClass('active');
+    handleStickyToggler();
+});
