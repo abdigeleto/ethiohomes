@@ -592,6 +592,7 @@
             // Show promotion slider and news section on "All Properties" page
             $('.hero-slider').slideDown();
             $('.news-section').slideDown();
+            $('.owner-posts-section').slideDown();
 
             // "All Properties" View: Show 1 representative card per company
             descriptionBox.html(`
@@ -634,6 +635,7 @@
             // Hide promotion slider and news section on specific company pages
             $('.hero-slider').slideUp();
             $('.news-section').slideUp();
+            $('.owner-posts-section').slideUp();
 
             // Specific Company View
 
@@ -651,7 +653,9 @@
             // Generate Description Carousel Items
             const descCarouselItems = randomImages.map(img => `
             <div class="desc-slide">
-                <img src="${img}" alt="Property View">
+                <a href="${img}" class="fancybox" rel="desc-gallery">
+                    <img src="${img}" alt="Property View">
+                </a>
             </div>
     `).join('');
 
@@ -701,7 +705,9 @@
                     // Duplicate items for infinite marquee effect
                     const itemsHtml = carousel.listings.map(item => `
                     <div class="carousel-card simple-carousel">
-                        <img src="${item.img}" alt="${item.title}" class="slider-img-square" />
+                        <a href="${item.img}" class="fancybox" rel="gallery-${carouselId}">
+                            <img src="${item.img}" alt="${item.title}" class="slider-img-square" />
+                        </a>
                     </div>
     `).join('');
 
@@ -726,6 +732,25 @@
             // Start All Marquees (Main + Description)
             // We use a general function to animate any .marquee-track and .desc-carousel-track
             startMarquees();
+
+            // Initialize Fancybox on dynamically loaded elements
+            $(".fancybox").fancybox({
+                padding: 0,
+                openEffect: 'elastic',
+                closeEffect: 'elastic',
+                helpers: {
+                    title: {
+                        type: 'outside'
+                    },
+                    overlay: {
+                        css: {
+                            'background': 'rgba(10, 25, 47, 0.8)',
+                            'backdrop-filter': 'blur(12px)',
+                            '-webkit-backdrop-filter': 'blur(12px)'
+                        }
+                    }
+                }
+            });
 
         }
 

@@ -146,12 +146,6 @@ $(function () {
 
 		// Start auto-play
 		startAutoPlay();
-
-		// Pause on hover
-		$('.hero-slider').hover(
-			function () { stopAutoPlay(); },
-			function () { startAutoPlay(); }
-		);
 	});
 
 	/* Product slider 
