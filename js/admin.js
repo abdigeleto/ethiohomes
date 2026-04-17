@@ -45,13 +45,37 @@ async function ghDelete(path, message, sha) {
     if (!r.ok) { const e = await r.json(); throw new Error(e.message || r.statusText); }
 }
 
-function fileToBase64(file) {
+// Compress & resize image using Canvas before uploading (max 1500px, quality 0.82)
+function compressImage(file) {
     return new Promise((resolve, reject) => {
-        const fr = new FileReader();
-        fr.onload = () => resolve(fr.result.split(',')[1]);
-        fr.onerror = reject;
-        fr.readAsDataURL(file);
+        const MAX_PX = 1500;
+        const QUALITY = 0.82;
+        const img = new Image();
+        const url = URL.createObjectURL(file);
+        img.onload = () => {
+            URL.revokeObjectURL(url);
+            let { width, height } = img;
+            if (width > MAX_PX || height > MAX_PX) {
+                if (width > height) { height = Math.round(height * MAX_PX / width); width = MAX_PX; }
+                else { width = Math.round(width * MAX_PX / height); height = MAX_PX; }
+            }
+            const canvas = document.createElement('canvas');
+            canvas.width = width; canvas.height = height;
+            canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+            const dataUrl = canvas.toDataURL('image/jpeg', QUALITY);
+            resolve(dataUrl.split(',')[1]); // return pure base64
+        };
+        img.onerror = reject;
+        img.src = url;
     });
+}
+
+// Verify token has repo write access before doing uploads
+async function verifyToken() {
+    const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`, {
+        headers: { Authorization: `token ${getToken()}`, Accept: 'application/vnd.github.v3+json' }
+    });
+    if (!r.ok) throw new Error(`Token invalid or no repo access (${r.status}). Check your GitHub token has the "repo" scope.`);
 }
 
 // ─── AUTH ─────────────────────────────────────────────────────────────────────
@@ -176,20 +200,22 @@ async function submitPost() {
 
     const btn = document.getElementById('submit-btn');
     btn.disabled = true; btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Publishing...';
-    setProgress(true, 0, 'Preparing...');
+    setProgress(true, 0, 'Verifying access...');
 
     try {
+        await verifyToken();
+
         const postId = 'post-' + Date.now();
         const folder = `images/updates/${postId}`;
         const imagesPaths = [];
 
-        // Upload each image
+        // Compress & upload each image
         for (let i = 0; i < selectedFiles.length; i++) {
             const f = selectedFiles[i];
-            const ext = f.name.split('.').pop() || 'jpg';
-            const path = `${folder}/image-${i + 1}.${ext}`;
-            const b64 = await fileToBase64(f);
-            setProgress(true, Math.round(((i) / selectedFiles.length) * 80), `Uploading image ${i + 1} of ${selectedFiles.length}...`);
+            setProgress(true, Math.round((i / selectedFiles.length) * 75), `Compressing image ${i + 1} of ${selectedFiles.length}...`);
+            const b64 = await compressImage(f);
+            const path = `${folder}/image-${i + 1}.jpg`;
+            setProgress(true, Math.round(((i + 0.5) / selectedFiles.length) * 75), `Uploading image ${i + 1} of ${selectedFiles.length}...`);
             await ghPut(path, b64, `Upload image for ${postId}`);
             imagesPaths.push(path);
         }
