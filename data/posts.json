@@ -7,5 +7,16 @@
       "images/updates/post-1776428158759/image-1.jpg"
     ],
     "date": "2026-04-17T12:16:00.316Z"
+  },
+  {
+    "id": "post-1776429195461",
+    "title": "New new",
+    "description": "New appartment is here",
+    "images": [
+      "images/updates/post-1776429195461/image-1.jpg",
+      "images/updates/post-1776429195461/image-2.jpg",
+      "images/updates/post-1776429195461/image-3.jpg"
+    ],
+    "date": "2026-04-17T12:33:32.889Z"
   }
 ]
