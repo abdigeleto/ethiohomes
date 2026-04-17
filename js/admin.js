@@ -5,7 +5,7 @@ const BRANCH = 'main';
 const POSTS_PATH = 'data/posts.json';
 // Password is stored as a simple hash so it's not in plain text.
 // Default password: EthioHomes2025  (change by running: btoa('your_new_password') in console)
-const PASSWORD_HASH = btoa('EthioHomes2025');
+const PASSWORD_HASH = btoa('Jo@123');
 
 // ─── STATE ────────────────────────────────────────────────────────────────────
 let selectedFiles = [];   // Array of File objects chosen by owner
