@@ -786,7 +786,73 @@ header {
     margin-bottom: 0;
 }
 
-/* Sidebar */
+.post-date {
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--accent-gold);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Multi-image grid inside a post card */
+.post-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 160px 160px;
+    gap: 3px;
+}
+
+.post-grid-img {
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.post-grid-img:first-child {
+    grid-row: 1 / 3;
+}
+
+.post-grid-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+    display: block;
+}
+
+.post-grid-img:hover img {
+    transform: scale(1.05);
+}
+
+.grid-more {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    pointer-events: none;
+}
+
+/* Single-image clickable */
+.owner-post-card a .post-image {
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.owner-post-card a:hover .post-image {
+    transform: scale(1.03);
+}
+
+
 .sidebar {
     background: var(--secondary-bg);
     padding: 0;

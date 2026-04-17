@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ethio Homes – Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #d4af37;
+            --gold-light: #f4d03f;
+            --dark: #0a192f;
+            --dark2: #112240;
+            --white: #fff;
+            --muted: #8892a4;
+            --danger: #e74c3c;
+            --success: #2ecc71;
+            --radius: 12px;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            min-height: 100vh;
+            color: var(--white);
+        }
+
+        /* ─── LOGIN SCREEN ─── */
+        #login-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .login-card .logo {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .login-card h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+
+        .login-card p {
+            color: var(--muted);
+            margin-bottom: 35px;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius);
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border: none;
+            border-radius: var(--radius);
+            color: var(--dark);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn.btn-danger {
+            background: linear-gradient(135deg, var(--danger), #c0392b);
+            color: var(--white);
+        }
+
+        .btn.btn-sm {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .btn.btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            width: auto;
+            padding: 10px 20px;
+        }
+
+        .btn.btn-outline:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .error-msg {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid var(--danger);
+            color: #ff6b5b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* ─── ADMIN PANEL ─── */
+        #admin-panel {
+            display: none;
+        }
+
+        .top-bar {
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 18px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .top-bar .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .top-bar .brand i {
+            font-size: 1.5rem;
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .admin-body {
+            padding: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* ─── SETTINGS SECTION ─── */
+        .settings-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .settings-card.hidden {
+            display: none;
+        }
+
+        .settings-card h3 {
+            color: var(--gold);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .inline-form {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+        }
+
+        .inline-form .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        /* ─── POST FORM ─── */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            color: var(--gold);
+        }
+
+        .post-form-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* ─── IMAGE UPLOAD ZONE ─── */
+        .upload-zone {
+            border: 2px dashed rgba(212, 175, 55, 0.4);
+            border-radius: var(--radius);
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .upload-zone:hover,
+        .upload-zone.drag-over {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .upload-zone i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .upload-zone h4 {
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .upload-zone p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .upload-zone input {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ─── IMAGE PREVIEWS ─── */
+        .image-previews {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .preview-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .preview-item .remove-img {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 26px;
+            height: 26px;
+            background: rgba(231, 76, 60, 0.9);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .preview-item .remove-img:hover {
+            transform: scale(1.15);
+            background: var(--danger);
+        }
+
+        /* ─── EXISTING POSTS ─── */
+        .posts-section {
+            margin-top: 40px;
+        }
+
+        .post-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: border-color 0.3s;
+        }
+
+        .post-item:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .post-thumb {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .post-thumb img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .post-thumb .more-count {
+            width: 70px;
+            height: 70px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .post-info {
+            flex: 1;
+        }
+
+        .post-info h4 {
+            color: var(--white);
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+
+        .post-info p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .post-meta {
+            color: var(--gold);
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        /* ─── STATUS TOAST ─── */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--dark2);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            font-size: 0.95rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 380px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            border-color: var(--danger);
+        }
+
+        .toast i {
+            font-size: 1.3rem;
+        }
+
+        .toast.success i {
+            color: var(--success);
+        }
+
+        .toast.error i {
+            color: var(--danger);
+        }
+
+        .progress-bar-wrap {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            height: 6px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            border-radius: 100px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin: 30px 0;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--muted);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: rgba(212, 175, 55, 0.3);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .badge {
+            background: var(--gold);
+            color: var(--dark);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ─── LOGIN ─── -->
+    <div id="login-screen">
+        <div class="login-card">
+            <div class="logo"><i class="fa fa-building-columns"></i></div>
+            <h1>Ethio Homes</h1>
+            <p>Admin Panel — Secure Access</p>
+            <div class="form-group">
+                <label><i class="fa fa-lock"></i> Password</label>
+                <input type="password" id="login-password" placeholder="Enter admin password"
+                    onkeydown="if(event.key==='Enter') doLogin()">
+            </div>
+            <button class="btn" onclick="doLogin()"><i class="fa fa-arrow-right-to-bracket"></i> Sign In</button>
+            <div class="error-msg" id="login-error">❌ Incorrect password. Please try again.</div>
+        </div>
+    </div>
+
+    <!-- ─── ADMIN PANEL ─── -->
+    <div id="admin-panel">
+        <div class="top-bar">
+            <div class="brand">
+                <i class="fa fa-building-columns"></i>
+                Ethio Homes Admin
+            </div>
+            <div class="top-bar-right">
+                <button class="btn btn-outline btn-sm" onclick="toggleSettings()"><i class="fa fa-gear"></i>
+                    Settings</button>
+                <button class="btn btn-danger btn-sm" onclick="doLogout()"><i class="fa fa-right-from-bracket"></i>
+                    Logout</button>
+            </div>
+        </div>
+
+        <div class="admin-body">
+
+            <!-- Settings -->
+            <div class="settings-card hidden" id="settings-panel">
+                <h3><i class="fa fa-gear"></i> GitHub Settings</h3>
+                <p style="color:var(--muted); font-size:0.9rem; margin-bottom:18px;">
+                    Enter your GitHub Personal Access Token below. It is saved only in your browser and never sent
+                    anywhere except to GitHub directly.
+                </p>
+                <div class="inline-form">
+                    <div class="form-group">
+                        <label>GitHub Personal Access Token</label>
+                        <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+                    </div>
+                    <button class="btn btn-sm" onclick="saveSettings()" style="margin-bottom:0; white-space:nowrap;">
+                        <i class="fa fa-save"></i> Save
+                    </button>
+                </div>
+                <p style="color:var(--muted); font-size:0.8rem; margin-top:10px;">
+                    <i class="fa fa-circle-info"></i> Repo: <strong>abdigeleto/ethiohomes</strong> · Branch:
+                    <strong>main</strong>
+                </p>
+            </div>
+
+            <!-- New Post Form -->
+            <div class="section-title">
+                <i class="fa fa-plus-circle"></i> Create New Post
+            </div>
+
+            <div class="post-form-card">
+                <div class="form-group">
+                    <label>Post Title</label>
+                    <input type="text" id="post-title" placeholder="e.g. New Luxury Apartments in Bole">
+                </div>
+                <div class="form-group" style="margin-bottom:20px;">
+                    <label>Description</label>
+                    <textarea id="post-desc" rows="3" placeholder="Write a short description of this update..."
+                        style="width:100%;padding:14px 18px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:12px;color:#fff;font-size:1rem;resize:vertical;outline:none;font-family:inherit;transition:all 0.3s;"
+                        onfocus="this.style.borderColor='var(--gold)'"
+                        onblur="this.style.borderColor='rgba(255,255,255,0.15)'"></textarea>
+                </div>
+
+                <!-- Upload Zone -->
+                <label>Images <span style="color:var(--muted);font-weight:400;">(select as many as you
+                        want)</span></label>
+                <div class="upload-zone" id="upload-zone"
+                    ondragover="event.preventDefault(); this.classList.add('drag-over')"
+                    ondragleave="this.classList.remove('drag-over')" ondrop="handleDrop(event)">
+                    <input type="file" accept="image/*" multiple id="file-input" onchange="handleFiles(this.files)">
+                    <i class="fa fa-cloud-arrow-up"></i>
+                    <h4>Drag & drop images here</h4>
+                    <p>or click to browse your device</p>
+                </div>
+
+                <!-- Previews -->
+                <div class="image-previews" id="image-previews"></div>
+
+                <!-- Progress -->
+                <div id="progress-wrap" style="display:none;">
+                    <p style="color:var(--muted);margin-bottom:8px; font-size:0.9rem;" id="progress-label">Uploading...
+                    </p>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="submitPost()" style="margin-top:20px;" id="submit-btn">
+                    <i class="fa fa-paper-plane"></i> Publish Post
+                </button>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Existing Posts -->
+            <div class="posts-section">
+                <div class="section-title" style="margin-bottom:20px;">
+                    <i class="fa fa-images"></i> Published Posts
+                    <span class="badge" id="posts-count">0</span>
+                </div>
+                <div id="posts-list">
+                    <div class="empty-state">
+                        <i class="fa fa-box-open"></i>
+                        <p>No posts yet. Create your first post above!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fa fa-circle-check"></i>
+        <span id="toast-msg">Done!</span>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
