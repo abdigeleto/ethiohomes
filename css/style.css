@@ -768,6 +768,59 @@ header {
     object-fit: cover;
 }
 
+/* Thumbnail strip on post cards */
+.post-thumb-strip {
+    display: flex;
+    height: 200px;
+    gap: 3px;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.post-thumb-item {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+.owner-post-card:hover .post-thumb-item {
+    transform: scale(1.04);
+}
+
+.post-thumb-more {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.52);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* View & Quote button inside card */
+.post-view-btn {
+    display: inline-block;
+    margin-top: 14px;
+    color: var(--accent-gold);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+    transition: gap 0.3s;
+}
+
+.post-view-btn i {
+    margin-left: 6px;
+    transition: transform 0.3s;
+}
+
+.owner-post-card:hover .post-view-btn i {
+    transform: translateX(4px);
+}
+
 .post-content {
     padding: 25px;
 }
