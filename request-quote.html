@@ -369,27 +369,38 @@
                             ? new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
                             : '';
 
-                        // Build gallery: each image is a direct fancybox <a> link
+                        // Build gallery with div wrappers so global img CSS cannot override sizing
+                        const MAIN_H = '440px';
+                        const THUMB_H = '130px';
+                        const imgStyle = 'width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;';
+
                         let galleryHtml = '<div class="post-gallery">';
 
                         if (images.length === 1) {
-                            // Single image – full width, rounded, clickable
                             galleryHtml += `
-                                <a href="${images[0]}" class="fancybox post-gallery-main" rel="post-${post.id}" title="${escHtml(post.title)}">
-                                    <img src="${images[0]}" alt="${escHtml(post.title)}">
+                                <a href="${images[0]}" class="fancybox" rel="post-${post.id}" title="${escHtml(post.title)}"
+                                   style="display:block;width:100%;border-radius:12px;overflow:hidden;margin-bottom:8px;">
+                                    <div style="width:100%;height:${MAIN_H};overflow:hidden;">
+                                        <img src="${images[0]}" alt="${escHtml(post.title)}" style="${imgStyle}">
+                                    </div>
                                 </a>`;
                         } else {
-                            // First image large, rest as thumbnail strip
                             galleryHtml += `
-                                <a href="${images[0]}" class="fancybox post-gallery-main" rel="post-${post.id}" title="${escHtml(post.title)} – 1 of ${images.length}">
-                                    <img src="${images[0]}" alt="${escHtml(post.title)}">
+                                <a href="${images[0]}" class="fancybox" rel="post-${post.id}" title="${escHtml(post.title)} – 1 of ${images.length}"
+                                   style="display:block;width:100%;border-radius:12px;overflow:hidden;margin-bottom:8px;">
+                                    <div style="width:100%;height:${MAIN_H};overflow:hidden;">
+                                        <img src="${images[0]}" alt="${escHtml(post.title)}" style="${imgStyle}">
+                                    </div>
                                 </a>
-                                <div class="post-gallery-strip">`;
+                                <div style="display:flex;gap:8px;">`;
 
                             images.slice(1).forEach((img, i) => {
                                 galleryHtml += `
-                                    <a href="${img}" class="fancybox post-gallery-thumb" rel="post-${post.id}" title="${escHtml(post.title)} – ${i + 2} of ${images.length}">
-                                        <img src="${img}" alt="Photo ${i + 2}">
+                                    <a href="${img}" class="fancybox" rel="post-${post.id}" title="${escHtml(post.title)} – ${i + 2} of ${images.length}"
+                                       style="flex:1;display:block;border-radius:8px;overflow:hidden;">
+                                        <div style="width:100%;height:${THUMB_H};overflow:hidden;">
+                                            <img src="${img}" alt="Photo ${i + 2}" style="${imgStyle}">
+                                        </div>
                                     </a>`;
                             });
                             galleryHtml += '</div>';
