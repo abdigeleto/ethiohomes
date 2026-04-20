@@ -24,7 +24,7 @@ $(document).ready(function () {
                     <span id="pmo-date"></span>
                     <h2 id="pmo-title"></h2>
                     <p id="pmo-desc"></p>
-                    <a id="pmo-cta" href="contact.html" class="pmo-cta-btn" target="_self">
+                    <a id="pmo-cta" href="https://rodcards.com.et/profiles/yosef" class="pmo-cta-btn" target="_blank">
                         <i class="fa fa-phone"></i> Contact Us Now
                     </a>
                 </div>
