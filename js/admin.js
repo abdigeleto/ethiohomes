@@ -152,7 +152,7 @@ async function loadPosts() {
     if (!getToken()) return;
     try {
         const data = await ghGet(POSTS_PATH);
-        allPosts = JSON.parse(atob(data.content.replace(/\n/g, '')));
+        allPosts = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, '')))));
     } catch (e) { allPosts = []; }
     renderPostsList();
 }

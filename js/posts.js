@@ -12,7 +12,7 @@ $(document).ready(function () {
     })
         .then(r => r.json())
         .then(data => {
-            const json = atob(data.content.replace(/\n/g, ''));
+            const json = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
             const posts = JSON.parse(json);
 
             if (!posts || !posts.length) {
