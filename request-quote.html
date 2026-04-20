@@ -420,16 +420,29 @@
                 // ── STANDARD PROPERTY MODE (from cards) ───────────────────
             } else if (imgSrc && title) {
                 const decoded = decodeURIComponent(title);
+                const imgUrl = decodeURIComponent(imgSrc);
                 $('#selected-property').html(`
-                <h2>${decoded}</h2>
-                <a href="${decodeURIComponent(imgSrc)}" class="fancybox" rel="prop">
-                    <img src="${decodeURIComponent(imgSrc)}" alt="${decoded}">
-                </a>`);
-                $('title').text(decoded + ' – Ethio Homes');
+                    <a href="${imgUrl}" class="fancybox" rel="prop"
+                       style="display:block;width:100%;border-radius:14px;overflow:hidden;margin-bottom:20px;box-shadow:0 10px 35px rgba(0,0,0,0.12);cursor:pointer;">
+                        <div style="width:100%;height:440px;overflow:hidden;">
+                            <img src="${imgUrl}" alt="${decoded}"
+                                 style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.45s ease;"
+                                 onmouseover="this.style.transform='scale(1.04)'"
+                                 onmouseout="this.style.transform='scale(1)'">
+                        </div>
+                    </a>
+                    <div class="post-info-card" style="text-align:center;">
+                        <span class="post-tag"><i class="fa fa-building"></i> Property</span>
+                        <h2>${decoded}</h2>
+                        <p>Interested in this property? Contact us for pricing, availability, and a personalised consultation.</p>
+                    </div>`);
+                $('title').text(decoded + ' \u2013 Ethio Homes');
+                $('.titlepage').hide();
                 $('.fancybox').fancybox({
                     padding: 0,
                     helpers: { overlay: { css: { background: 'rgba(10,25,47,0.8)', 'backdrop-filter': 'blur(12px)' } } }
                 });
+
 
                 // ── PLAIN QUOTE PAGE (no params) ─────────────────────────
             } else {
