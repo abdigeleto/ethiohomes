@@ -1877,3 +1877,12 @@ body.modal-open {
         height: 180px;
     }
 }
+
+/* ── Fancybox must appear above the post modal ── */
+#fancybox-overlay {
+    z-index: 10000 !important;
+}
+
+#fancybox-wrap {
+    z-index: 10001 !important;
+}
