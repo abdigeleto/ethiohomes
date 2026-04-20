@@ -6,16 +6,42 @@ const GH_RAW_BASE = 'https://raw.githubusercontent.com/abdigeleto/ethiohomes/mai
 function ghImgUrl(path) {
     return path.startsWith('http') ? path : GH_RAW_BASE + path;
 }
-
 function escHtml(str) {
     if (!str) return '';
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-// ── Inject modal markup once ────────────────────────────────────────────────
+// ── Custom lightbox state ───────────────────────────────────────────────────
+let _lbImages = [], _lbIndex = 0;
+
+function openLightbox(images, index) {
+    _lbImages = images;
+    _lbIndex = index;
+    document.getElementById('lb-img').src = images[index];
+    document.getElementById('lb-counter').textContent = `${index + 1} / ${images.length}`;
+    document.getElementById('lb-prev').style.display = images.length > 1 ? 'flex' : 'none';
+    document.getElementById('lb-next').style.display = images.length > 1 ? 'flex' : 'none';
+    document.getElementById('post-lightbox').classList.add('active');
+}
+function closeLightbox() {
+    document.getElementById('post-lightbox').classList.remove('active');
+}
+function lbStep(dir) {
+    _lbIndex = (_lbIndex + dir + _lbImages.length) % _lbImages.length;
+    const img = document.getElementById('lb-img');
+    img.style.opacity = 0;
+    setTimeout(() => {
+        img.src = _lbImages[_lbIndex];
+        img.style.opacity = 1;
+        document.getElementById('lb-counter').textContent = `${_lbIndex + 1} / ${_lbImages.length}`;
+    }, 150);
+}
+
+// ── Inject modal + lightbox markup once ─────────────────────────────────────
 $(document).ready(function () {
 
     $('body').append(`
+        <!-- Post detail modal -->
         <div id="post-modal-overlay" onclick="closePostModal()">
             <div id="post-modal" onclick="event.stopPropagation()">
                 <button class="pmo-close" onclick="closePostModal()"><i class="fa fa-xmark"></i></button>
@@ -24,13 +50,43 @@ $(document).ready(function () {
                     <span id="pmo-date"></span>
                     <h2 id="pmo-title"></h2>
                     <p id="pmo-desc"></p>
-                    <a id="pmo-cta" href="https://rodcards.com.et/profiles/yosef" class="pmo-cta-btn" target="_blank">
-                        <i class="fa fa-phone"></i> Contact Us Now
-                    </a>
+                    <div style="text-align:center;">
+                        <a id="pmo-cta" href="https://rodcards.com.et/profiles/yosef"
+                           class="pmo-cta-btn" target="_blank">
+                            <i class="fa fa-phone"></i> Contact Us Now
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Custom lightbox (always above everything) -->
+        <div id="post-lightbox" onclick="closeLightbox()">
+            <button class="lb-close" onclick="closeLightbox()"><i class="fa fa-xmark"></i></button>
+            <button class="lb-nav lb-prev" id="lb-prev" onclick="event.stopPropagation();lbStep(-1)">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+            <div class="lb-img-wrap" onclick="event.stopPropagation()">
+                <img id="lb-img" src="" alt="">
+            </div>
+            <button class="lb-nav lb-next" id="lb-next" onclick="event.stopPropagation();lbStep(1)">
+                <i class="fa fa-chevron-right"></i>
+            </button>
+            <span class="lb-counter" id="lb-counter"></span>
+        </div>
     `);
+
+    // Keyboard nav for lightbox
+    $(document).on('keydown', function (e) {
+        const lb = document.getElementById('post-lightbox');
+        if (lb.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') lbStep(-1);
+            if (e.key === 'ArrowRight') lbStep(1);
+            if (e.key === 'Escape') closeLightbox();
+        } else if (e.key === 'Escape') {
+            closePostModal();
+        }
+    });
 
     // ── Load posts ──────────────────────────────────────────────────────────
     const postsContainer = $('#posts-container');
@@ -47,9 +103,9 @@ $(document).ready(function () {
                 return;
             }
 
-            const sorted = [...posts].reverse();
+            window._postsData = [...posts].reverse();
 
-            sorted.forEach(post => {
+            window._postsData.forEach(post => {
                 const images = (post.images || []).map(ghImgUrl);
                 const firstImg = images[0] || '';
                 const date = post.date
@@ -61,7 +117,9 @@ $(document).ready(function () {
                     <div class="col-md-4 mb-4">
                         <div class="owner-post-card" onclick="openPostModal('${post.id}')" style="cursor:pointer;">
                             <div class="opc-img-wrap">
-                                ${firstImg ? `<img src="${firstImg}" alt="${escHtml(post.title)}" class="opc-cover">` : '<div class="opc-no-img"><i class="fa fa-image"></i></div>'}
+                                ${firstImg
+                        ? `<img src="${firstImg}" alt="${escHtml(post.title)}" class="opc-cover">`
+                        : '<div class="opc-no-img"><i class="fa fa-image"></i></div>'}
                                 <span class="opc-badge"><i class="fa fa-images"></i> ${photoLabel}</span>
                             </div>
                             <div class="opc-body">
@@ -73,9 +131,6 @@ $(document).ready(function () {
                         </div>
                     </div>`);
             });
-
-            // Store posts globally for modal access
-            window._postsData = sorted;
         })
         .catch(err => {
             console.warn('Could not load posts:', err);
@@ -83,7 +138,7 @@ $(document).ready(function () {
         });
 });
 
-// ── Modal open / close ──────────────────────────────────────────────────────
+// ── Modal open/close ─────────────────────────────────────────────────────────
 function openPostModal(postId) {
     const post = (window._postsData || []).find(p => p.id === postId);
     if (!post) return;
@@ -93,51 +148,36 @@ function openPostModal(postId) {
         ? new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
         : '';
 
-    // Build gallery grid
-    const imgStyle = 'width:100%;height:100%;object-fit:cover;display:block;';
-    const H = images.length === 1 ? '340px' : '220px';
-    const cols = images.length === 1 ? 1 : 2;
-    let galleryHtml = `<div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:6px;border-radius:16px;overflow:hidden;">`;
-
+    // Single-column gallery — one image per row, full width
+    const imgH = '260px';
+    let galleryHtml = '<div class="pmo-gallery-grid">';
     images.forEach((img, i) => {
         galleryHtml += `
-            <a href="${img}" class="fancybox" rel="modal-gallery-${postId}"
-               title="${escHtml(post.title)} – ${i + 1} of ${images.length}"
-               style="display:block;overflow:hidden;">
-                <div style="width:100%;height:${H};overflow:hidden;">
-                    <img src="${img}" alt="Photo ${i + 1}" style="${imgStyle}transition:transform 0.4s ease;"
+            <div class="pmo-gallery-cell" onclick="openLightbox(window._currentImages,${i})">
+                <div style="width:100%;height:${imgH};overflow:hidden;">
+                    <img src="${img}" alt="Photo ${i + 1}"
+                         style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;"
                          onmouseover="this.style.transform='scale(1.06)'"
                          onmouseout="this.style.transform='scale(1)'">
                 </div>
-            </a>`;
+            </div>`;
     });
     galleryHtml += '</div>';
 
+    window._currentImages = images;
+
     $('#pmo-gallery').html(galleryHtml);
-    $('#pmo-date').html(date ? `<i class="fa fa-calendar-days"></i> ${date} &nbsp;·&nbsp; <i class="fa fa-images"></i> ${images.length} photo${images.length !== 1 ? 's' : ''}` : '');
+    $('#pmo-date').html(date
+        ? `<i class="fa fa-calendar-days"></i> ${date} &nbsp;·&nbsp; <i class="fa fa-images"></i> ${images.length} photo${images.length !== 1 ? 's' : ''}`
+        : '');
     $('#pmo-title').text(post.title);
     $('#pmo-desc').text(post.description);
 
     $('#post-modal-overlay').addClass('active');
     $('body').addClass('modal-open');
-
-    // Init fancybox for this modal's gallery
-    setTimeout(() => {
-        $('.fancybox').fancybox({
-            padding: 0,
-            openEffect: 'elastic',
-            closeEffect: 'elastic',
-            helpers: { overlay: { css: { background: 'rgba(0,0,0,0.92)' } } }
-        });
-    }, 50);
 }
 
 function closePostModal() {
     $('#post-modal-overlay').removeClass('active');
     $('body').removeClass('modal-open');
 }
-
-// Close on Escape key
-$(document).on('keydown', function (e) {
-    if (e.key === 'Escape') closePostModal();
-});

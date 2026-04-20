@@ -1886,3 +1886,196 @@ body.modal-open {
 #fancybox-wrap {
     z-index: 10001 !important;
 }
+
+/* ══════════════════════════════════════════════
+   MODAL GALLERY – single column
+═══════════════════════════════════════════════ */
+.pmo-gallery-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.pmo-gallery-cell {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.pmo-gallery-cell:first-child {
+    border-radius: 14px 14px 4px 4px;
+}
+
+.pmo-gallery-cell:last-child {
+    border-radius: 4px 4px 14px 14px;
+}
+
+.pmo-gallery-cell:only-child {
+    border-radius: 14px;
+}
+
+/* Contact Us button – centered & pulsing */
+.pmo-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    color: #1a1a1a !important;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 15px 38px;
+    border-radius: 50px;
+    text-decoration: none !important;
+    box-shadow: 0 6px 22px rgba(212, 175, 55, 0.4);
+    animation: ctaPulse 2.2s ease-in-out infinite;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.pmo-cta-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 14px 36px rgba(212, 175, 55, 0.55);
+    animation: none;
+}
+
+@keyframes ctaPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 6px 22px rgba(212, 175, 55, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 6px 32px rgba(212, 175, 55, 0.75), 0 0 0 8px rgba(212, 175, 55, 0.12);
+    }
+}
+
+/* ══════════════════════════════════════════════
+   CUSTOM LIGHTBOX
+═══════════════════════════════════════════════ */
+#post-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.94);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#post-lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lb-img-wrap {
+    max-width: 90vw;
+    max-height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lb-img-wrap img {
+    max-width: 88vw;
+    max-height: 86vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    transition: opacity 0.15s ease;
+}
+
+/* Nav arrows */
+.lb-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+    z-index: 100000;
+    backdrop-filter: blur(4px);
+}
+
+.lb-nav:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.lb-prev {
+    left: 16px;
+}
+
+.lb-next {
+    right: 16px;
+}
+
+/* Close button */
+.lb-close {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 100000;
+}
+
+.lb-close:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+/* Counter */
+.lb-counter {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 18px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    z-index: 100000;
+}
+
+@media (max-width: 575px) {
+    .lb-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+
+    .lb-prev {
+        left: 8px;
+    }
+
+    .lb-next {
+        right: 8px;
+    }
+}
